@@ -159,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
 
+
     public boolean isGPSEnabled() {
 
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
