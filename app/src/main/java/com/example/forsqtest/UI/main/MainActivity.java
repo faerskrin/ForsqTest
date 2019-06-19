@@ -114,6 +114,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @SuppressLint("MissingPermission")
     private void getLocation() {
+        if (!isGPSEnabled())
+        {
+            Intent intent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(intent);
+        }
         mLockList = new MyLocListener();
         mLocMan = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         mLocMan.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, mLockList);
@@ -122,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
+
         getLocation();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -150,5 +156,15 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         String gson = new Gson().toJson(item);
         intent.putExtra("gson", gson);
         startActivity(intent);
+    }
+
+
+    public boolean isGPSEnabled() {
+
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (locationManager != null)
+            return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        else
+            return false;
     }
 }

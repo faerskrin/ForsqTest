@@ -41,6 +41,8 @@
         <activity
             android:name=".UI.nextActivity.NextActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".UI.LargePhotoActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

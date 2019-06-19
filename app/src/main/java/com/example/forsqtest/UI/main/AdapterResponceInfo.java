@@ -42,12 +42,23 @@ public class AdapterResponceInfo extends RecyclerView.Adapter<AdapterResponceInf
         holder.mName.setText(mItem.get(position).getVenue().getName());
         holder.mDistance.setText(mItem.get(position).getVenue().getLocation().getDistance()+ " meters");
 
-        Glide.with(holder.mImage)
-                .load(mItem.get(position).getVenue().getCategories().get(0).getIcon().getPrefix()+"100.png")
-                .apply(RequestOptions
-                .errorOf(R.drawable.ic_launcher_foreground)
-                .placeholder(R.drawable.ic_launcher_foreground))
-                .into(holder.mImage);
+        if (mItem.get(position).getVenue().getPhotos().getCount()!=0)
+        {
+            Glide.with(holder.mImage)
+                    .load(mItem.get(position).getVenue().getPhotos().getGroups().get(0))
+                    .apply(RequestOptions
+                            .errorOf(R.drawable.ic_launcher_foreground)
+                            .placeholder(R.drawable.ic_launcher_foreground))
+                    .into(holder.mImage);
+
+        }else {
+            Glide.with(holder.mImage)
+                    .load(mItem.get(position).getVenue().getCategories().get(0).getIcon().getPrefix() + "100.png")
+                    .apply(RequestOptions
+                            .errorOf(R.drawable.ic_launcher_foreground)
+                            .placeholder(R.drawable.ic_launcher_foreground))
+                    .into(holder.mImage);
+        }
     }
 
     @Override
