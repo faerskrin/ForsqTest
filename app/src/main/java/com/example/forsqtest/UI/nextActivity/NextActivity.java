@@ -64,7 +64,7 @@ public class NextActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         if (mData.getVenue().getPhotos().getCount() != 0) {
             Glide.with(mImage)
-                    .load(mData.getVenue().getPhotos().getGroups().get(0))
+                    .load(mData.getVenue().getPhotos().getGroups().get(0).getPrefix() +"100.png")
                     .apply(RequestOptions
                             .errorOf(R.drawable.ic_launcher_foreground)
                             .placeholder(R.drawable.ic_launcher_foreground))

@@ -45,7 +45,7 @@ public class AdapterResponceInfo extends RecyclerView.Adapter<AdapterResponceInf
         if (mItem.get(position).getVenue().getPhotos().getCount()!=0)
         {
             Glide.with(holder.mImage)
-                    .load(mItem.get(position).getVenue().getPhotos().getGroups().get(0))
+                    .load(mItem.get(position).getVenue().getPhotos().getGroups().get(0).getPrefix() +"100.png")
                     .apply(RequestOptions
                             .errorOf(R.drawable.ic_launcher_foreground)
                             .placeholder(R.drawable.ic_launcher_foreground))
